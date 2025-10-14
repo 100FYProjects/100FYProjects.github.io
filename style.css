@@ -1,0 +1,176 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --primary-text-color: #111827;
+    --secondary-text-color: #4b5563;
+    --background-color: #f9fafb;
+    --card-background: #ffffff;
+    --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--primary-text-color);
+    line-height: 1.6;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+p {
+    color: var(--secondary-text-color);
+    margin-bottom: 1.5rem;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --- Main Container --- */
+/* On mobile, it's just padding. On desktop, it gets a max-width and is centered. */
+.container {
+    padding: 1.5rem;
+}
+
+
+/* --- Block 1: Hero Section --- */
+#hero {
+    display: flex;
+    flex-direction: column; /* Stacks content on mobile */
+    align-items: center;
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.hero-content {
+    order: 2; /* Text comes after image on mobile */
+}
+
+.hero-image {
+    order: 1; /* Image comes first on mobile */
+    width: 60%;
+    max-width: 250px;
+    margin-bottom: 2rem;
+}
+
+.hero-image img {
+    border-radius: 50%; /* Makes the image circular */
+    aspect-ratio: 1 / 1;
+    object-fit: cover; /* Prevents image stretching */
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem; /* Space between icons */
+}
+
+.social-links a {
+    color: var(--primary-text-color);
+    transition: transform 0.2s ease-in-out;
+}
+
+.social-links a:hover {
+    color: #007bff; /* Change color on hover */
+    transform: translateY(-3px);
+}
+
+.social-links svg {
+    width: 28px;
+    height: 28px;
+}
+
+
+/* --- Block 2: Image Gallery --- */
+.gallery-grid {
+    display: grid;
+    /* On mobile, one column that is the full width */
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.card {
+    background-color: var(--card-background);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    overflow: hidden; /* Ensures the image corners are rounded */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+
+.gallery-image {
+    width: 100%;
+    aspect-ratio: 1 / 1; /* This creates the 1:1 square aspect ratio */
+    object-fit: cover; /* Ensures the image fills the space without distortion */
+}
+
+.caption {
+    font-weight: 500;
+    padding: 1rem;
+    margin-bottom: 0; /* Override default p margin */
+    text-align: center;
+}
+
+
+/* --- Desktop Styles (using a media query) --- */
+@media (min-width: 768px) {
+    /* Center the main container on desktop */
+    .container {
+        max-width: 1100px;
+        margin-left: auto;
+        margin-right: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    /* Hero Section on Desktop */
+    #hero {
+        flex-direction: row; /* Side-by-side layout */
+        text-align: left;
+        gap: 3rem;
+        padding: 2rem 0;
+    }
+
+    .hero-content {
+        order: 1; /* Text on the left */
+        flex: 1;
+    }
+
+    .hero-image {
+        order: 2; /* Image on the right */
+        flex-basis: 300px; /* Fixed width for the image container */
+        margin-bottom: 0;
+    }
+    
+    .social-links {
+        justify-content: flex-start; /* Align icons to the left */
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    /* Gallery on Desktop */
+    .gallery-grid {
+        /* Creates a responsive grid with 3 columns */
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
